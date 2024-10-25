@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repo Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>GitHub Repo Activity Dashboard</h1>
+
+    <!-- Search Form -->
+    <form action="/" method="POST">
+        <label for="query">Semantic Search:</label>
+        <input type="text" id="query" name="query" placeholder="Enter search term">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Search Results (if any) -->
+    {% if search_results %}
+    <div>
+        <h2>Search Results</h2>
+        <table border="1">
+            <tr>
+                <th>Issue Title</th>
+                <th>Comment</th>
+                <th>Similarity</th>
+            </tr>
+            {% for result in search_results %}
+            <tr>
+                <td>{{ result['issue_title'] }}</td>
+                <td>{{ result['comment_text'] }}</td>
+                <td>{{ result['similarity'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+
+    <!-- Comment Chart -->
+    <div>
+        <h2>Most Commented Issues</h2>
+        <div>{{ comment_chart | safe }}</div>
+    </div>
+
+    <!-- User Rankings -->
+    <div>
+        <h2>Top Users by Score</h2>
+        <div>{{ ranking_chart | safe }}</div>
+    </div>
+</body>
+</html>

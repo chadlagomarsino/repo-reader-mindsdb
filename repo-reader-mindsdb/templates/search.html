@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Semantic Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Semantic Search</h1>
+        <form method="POST" action="/search">
+            <div class="form-group">
+                <label for="query">Enter your search query:</label>
+                <input type="text" class="form-control" id="query" name="query" placeholder="Type your query here" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <hr>
+
+        <!-- Display search results if available -->
+        {% if search_results %}
+        <h2>Search Results</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Issue Title</th>
+                    <th>Comment Text</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in search_results.iterrows() %}
+                <tr>
+                    <td>{{ row['cleaned_issue_title'] }}</td>
+                    <td>{{ row['cleaned_comment_text'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No search results found.</p>
+        {% endif %}
+
+        <!-- Display the generated response -->
+        <hr>
+        <h2>Generated Response</h2>
+        <p>{{ generated_text }}</p>
+
+    </div>
+</body>
+</html>

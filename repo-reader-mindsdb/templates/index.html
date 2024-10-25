@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub RAG Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>GitHub RAG Application</h1>
+        <h2>Feature Analysis</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Comment Count by Company</h3>
+                {{ comment_graph|safe }}  <!-- Plotly comment count graph -->
+            </div>
+            <div class="col-md-12">
+                <h3>Sentiment Breakdown by Company</h3>
+                {{ sentiment_graph|safe }}  <!-- Plotly sentiment graph -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

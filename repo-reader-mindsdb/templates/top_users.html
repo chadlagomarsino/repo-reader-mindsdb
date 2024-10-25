@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Users - Feedback Score</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Top Users by Feedback Score</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Comment Count</th>
+                    <th>Followers</th>
+                    <th>Public Repos</th>
+                    <th>Feedback Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in top_users.iterrows() %}
+                <tr>
+                    <td>{{ row['comment_user'] }}</td>
+                    <td>{{ row['comment_count'] }}</td>
+                    <td>{{ row['user_followers'] }}</td>
+                    <td>{{ row['user_public_repos'] }}</td>
+                    <td>{{ row['feedback_score'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
